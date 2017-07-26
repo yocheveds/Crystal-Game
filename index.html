@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--links-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="crystalgame.css">
+	<meta charset="UTF-8">
+	<title>My Crystal Game</title>
+
+<!--header-->
+<h1><strong>CrystalsCollector!</strong></h1>	
+<!--text-->
+<p>
+You will be given a random number at the start of the game.
+<br>
+<br>
+There are four crystals below, By clicking on a crystal you will add a specific amount of points to your total score.
+<br>
+<br>
+ You win the game by matching your total score to the random number, you lose the game if your total score goes above the random number.
+ <br>
+ <br>
+ The value of each crystal is hidden from you until you click on it.
+ <br>
+ <br>
+ Each time when the game starts, the game will change the values of each crystal.
+</p>
+
+</head>
+<body>
+
+<div id = "dot">
+<div> <strong class = "botton">computer guess &nbsp; &nbsp; <span id = "number" id="copmuterguess"></span></strong></div>
+<div> <strong class = "botton">wins &nbsp; &nbsp;  <span id="wins"></span></strong></div>
+<div> <strong class= "botton">losses &nbsp; &nbsp; <span id="losses"></span></strong></div>
+</div>
+
+
+
+
+<div id = "img">
+<img  id = "red" src="https://discoverwithdrcool.files.wordpress.com/2011/06/2-geodes1.jpg">
+<img  id = "blue" src="http://quatr.us/geology/rocks/igneous/pictures/amethyst.jpg">
+<img  id = "gold" src="https://1.bp.blogspot.com/-U8qF7KXyUTM/WQSlt8ySIXI/AAAAAAAAEt4/nY-Aj748-CAt7D6ogj5_gqtEHtpMz7QZgCLcB/s1600/garnet-alternate.jpg">
+<img  id = "white" src="https://s-media-cache-ak0.pinimg.com/736x/a1/94/7c/a1947c3985f3d2f42e1ac08bfc3823e9--healing-crystals-grow-crystals.jpg">
+</div>
+
+<h3><strong>Your total score is:</strong></h3>
+
+<h4 id = "result"><strong>0</strong></h4>
+
+
+
+<script type="text/javascript">
+
+var wins = 0;
+var losses = 0;
+var totalScore = 0;
+var userGuess = 0;
+var computerGuess;
+var red;
+var blue;
+var gold;
+var white;
+
+
+var scorediv = $("#number");
+var winsdiv = $("#wins");
+var lossesdiv = $("#losses");
+
+
+$("#red").on("click", function(){
+userGuess = red+ userGuess
+console.log(userGuess);
+checkScore()
+});
+$("#blue").on("click", function(){
+userGuess = blue+ userGuess
+console.log(userGuess);
+checkScore()
+});
+$("#gold").on("click", function(){
+userGuess = gold+ userGuess
+console.log(userGuess);
+checkScore()
+});
+$("#white").on("click", function(){
+	userGuess = white+ userGuess
+	console.log(userGuess);
+	checkScore()
+});
+
+function start() {
+computerGuess = Math.floor(Math.random() * 120)+19;
+console.log(computerGuess);
+red = Math.floor(Math.random() * 12)+1;
+blue = Math.floor(Math.random() * 12)+1;
+gold = Math.floor(Math.random() * 12)+1;
+white = Math.floor(Math.random() * 12)+1;
+
+}
+
+
+
+ start()
+ function  checkScore() {
+ 	$("#number").html(computerGuess);
+ 	$("#wins").html(wins);
+ 	$("#losses").html(losses);
+ 	$("#result").html(userGuess);
+ 	if (computerGuess === userGuess){
+	wins++;
+	userGuess = 0;
+	start()}
+else if (computerGuess < userGuess){
+	losses++;
+	userGuess = 0;
+	start()}
+ }
+  
+
+</script>
+</body>
+</html>
